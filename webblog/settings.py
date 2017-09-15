@@ -25,7 +25,7 @@ SECRET_KEY = '#sp!p1jt8+%y+kx#s4y)c3tb6mbahd$is%#4e(7$^yk*dgi#u2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['detrakt.pythonanywhere.com']
 
 
 # Application definition
