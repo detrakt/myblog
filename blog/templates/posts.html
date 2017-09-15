@@ -14,17 +14,19 @@
 		<center><a href="/createpost">Create post!</a></center>
 	{% endif %}
 
-
+	<div class="container">
 	{% if posts %}
 		{%for p in posts%}
 			<div class="post-container">
-				<p>{{p.title}} {%if user.is_authenticated%}<a href="/deletepost/{{p.id}}">Delete</a>{%endif%}</p>
+				<p>{{p.title|upper}} {%if user.is_authenticated%}<a href="/deletepost/{{p.id}}">Delete</a>{%endif%}</p>
 				<hr>
 				<p>{{p.content}}</p>
 			</div>
 		{%endfor%}
 	{% else %}
-	<center>No posts to show</center>
+		<center>No posts to show</center>
 	{% endif %}
+	</div>
+	
 {% endblock content%}
 

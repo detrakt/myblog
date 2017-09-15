@@ -2,6 +2,9 @@
 <html>
 <head>
 	<title>Blog</title>
+
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 
 <style type="text/css">
@@ -20,6 +23,9 @@
 
 <body>
 
+{% include 'navbar.html' %}
+
+<!-- ANTIGA NAVBAR
 <div class="navbar">
 	Menu: <a href="/">Home</a> || <a href="/about">About</a> {% if not user.is_authenticated%}|| <a href="/users/auth">Login</a> {%endif%}||
 	{% if user.is_authenticated%}
@@ -30,15 +36,19 @@
 	<hr>
 	
 </div>
+-->
 
 {% if message %}
-	<div class="message">
+	<div class="container">
 		<center>{{ message }}</center>
 	</div>
 {% endif %}
 
 {%block content%}
 {%endblock content%}
+
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 
 </body>
 </html>
