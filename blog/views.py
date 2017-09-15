@@ -28,3 +28,9 @@ def deletepost(request, post_id = -1):
 		post.delete()
 		return redirect('/')
 
+def viewpost(request, post_id = -1):
+	if post_id!=-1:
+		post = Post.objects.get(id=post_id)
+		return render(request, 'show_post.html', {'post':post})
+	else:
+		return HttpResponse("Post doesn't exist")

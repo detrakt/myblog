@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	<style type="text/css">
+	.post-container{
+		max-width: 70%;
+		border: 0.5px solid lightblue;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	</style>
+
+
+	<div class="container">
+	{% if post %}
+			<div class="post-container">
+				<p><a href="">{{post.title|upper}}</a>{%if user.is_authenticated%}<a href="/deletepost/{{post.id}}"><span class="glyphicon glyphicon-remove"></span></a>{%endif%}</p>
+				<hr>
+				<p>{{post.content}}</p>
+			</div>
+	{% else %}
+		<center>Couldn't retrieve post</center>
+	{% endif %}
+	</div>
+
+	<div class="container">
+		<a href="/"><input type="button" class="btn btn-success" value="Go back" ></a>
+	</div>
+	
+{% endblock content%}
+

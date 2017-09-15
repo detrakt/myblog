@@ -4,14 +4,15 @@
 	{% if error %}
 		<center style="color:red;">{{error}}</center>
 	{% endif %}
-
-	<form action="/users/register/" method="POST">
-	{% csrf_token %}
-	<label>Username: <input type="text" name="username"></label><br>
-	<label>Email: <input type="email" name="email"></label><br>
-	<label>Password: <input type="password" name="password"></label><br>
-	<hr>
-	<button type="submit">Register</button>
-		
-	</form>
+	<div class="container">
+		<form action="/users/register/" method="POST">
+		{% csrf_token %}
+		<label>Username: <input type="text" name="username"></label><br>
+		<label>Email: <input type="email" name="email"></label><br>
+		<label>Password: <input type="password" name="password"></label><br>
+		<hr>
+		<button type="submit">Register</button>
+			
+		</form>
+	</div>
 {% endblock content %}

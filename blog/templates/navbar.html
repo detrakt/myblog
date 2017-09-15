@@ -14,15 +14,15 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="/about"><span class="glyphicon glyphicon-info-sign"></span>About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {%if not user.is_authenticated%}
-          <li><a href="/users/auth">Login</a></li>
-          <li><a href="/users/register"">Register</a></li>
+          <li><a href="/users/auth"><span class="glyphicon glyphicon-chevron-up"></span>Login</a></li>
+          <li><a href="/users/register""><span class="glyphicon glyphicon-plus"></span>Register</a></li>
         {%else%}
-          <li>Hi, {{user.username}}!<a href="/users/logout">Logout</a></li>
+          <li>Hi, {{user.username}}!<a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
         {%endif%}
       </ul>
     </div><!-- /.navbar-collapse -->

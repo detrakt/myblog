@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^about/$', views.about),
     url(r'^createpost/$', views.createpost),
-    url(r'^deletepost/(?P<post_id>[0-9]+)/', views.deletepost),
+    url(r'^deletepost/(?P<post_id>[0-9]+)/$', views.deletepost),
+    url(r'^view/(?P<post_id>[0-9]+)/$', views.viewpost),
 ]
