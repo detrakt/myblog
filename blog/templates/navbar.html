@@ -22,7 +22,11 @@
           <li><a href="/users/auth"><span class="glyphicon glyphicon-chevron-up"></span>Login</a></li>
           <li><a href="/users/register""><span class="glyphicon glyphicon-plus"></span>Register</a></li>
         {%else%}
-          <li>Hi, {{user.username}}!<a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+          <li>Hi, {{user.username}}!  </li>
+          <li>
+            <a href="/users/logout"><i class="glyphicon glyphicon-log-out"></i>Logout</a>
+            </span>
+          </li>
         {%endif%}
       </ul>
     </div><!-- /.navbar-collapse -->
