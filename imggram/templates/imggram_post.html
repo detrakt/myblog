@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style type="text/css">
+	.centered{
+		width: 70%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.opacity:hover{
+		opacity: 0.7;
+	}
+</style>
+
+	<div class="container centered">
+	
+	{% if post %}
+		<center><a href="/imggram/show/{{post.id}}">{{post.title|upper}}</a></center>
+		<br>
+		<a href="#" class="opacity">
+			<img src="/media/{{ post.image }}">
+		</a>
+		<p style="padding-bottom:30px; padding-top: 20px;">
+		{{post.user.username}}: {{post.description}}
+		</p>
+	
+	{% else %}
+		<div class="container"><center>Invalid post.</center></div>
+	{% endif %}
+	
+	</div>
+
+	<div class="container centered">
+		<a href="/imggram/"><input type="button" class="btn btn-success" value="Go back" ></a>
+	</div>
+{% endblock content %}

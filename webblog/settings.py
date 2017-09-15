@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	'blog',
 	'userauth',
+	'imggram',
 ]
 
 MIDDLEWARE = [
@@ -123,4 +124,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
 					os.path.join(BASE_DIR, "webblog/static"),
+				]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'webblog/media')
+MEDIAFILES_DIRS = [
+					os.path.join(BASE_DIR, "webblog/media"),
 				]

@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+		
+	<style type="text/css">
+		.each-image{
+			max-width: 97%;
+		}
+
+		.each-image:hover{
+			opacity: 0.7;
+		}
+
+		.container{
+			max-width: 90%;
+		}
+
+		.image-row{
+			padding-top:20px;
+			padding-bottom: 20px;
+		}
+
+		
+	</style>
+
+	{% if user.is_authenticated %}
+		<div class="container">
+			<center>
+				<a href="/imggram/upload/">
+					<button class="btn btn-success">Upload Image</button>
+				</a>
+			</center>
+		<div>
+	{% endif%}
+
+	<br>
+
+	<div class="container">
+	
+	{% if posts %}
+		{% for post in posts %}
+			{% if forloop.first %}<div class="row image-row">{% endif %}
+				
+				<div class="col-xs-4">
+					<!-- {{ post.title }}<br> -->
+					<a href="/imggram/show/{{post.id}}">
+					<img src="/media/{{ post.image }}" class="each-image">
+					</a>
+				</div>
+			{% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+			{% if forloop.last %}</div>{% endif %}
+		{% endfor %}
+	
+	{% else %}
+		<div class="container"><center>No posts to show.</center></div>
+	{% endif %}
+	
+	</div>
+{% endblock content %}
