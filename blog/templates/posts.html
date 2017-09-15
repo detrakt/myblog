@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	<style type="text/css">
+	.post-container{
+		max-width: 70%;
+		border: 0.5px solid lightblue;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	</style>
+
+	{% if user.is_authenticated %}
+		<center><a href="/createpost">Create post!</a></center>
+	{% endif %}
+
+
+	{% if posts %}
+		{%for p in posts%}
+			<div class="post-container">
+				<p>{{p.title}} {%if user.is_authenticated%}<a href="/deletepost/{{p.id}}">Delete</a>{%endif%}</p>
+				<hr>
+				<p>{{p.content}}</p>
+			</div>
+		{%endfor%}
+	{% else %}
+	<center>No posts to show</center>
+	{% endif %}
+{% endblock content%}
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blog</title>
+</head>
+
+<style type="text/css">
+	
+	.navbar{
+		width: 100%;
+		padding-top: 10px;
+
+	}
+
+	.message{
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+</style>
+
+<body>
+
+<div class="navbar">
+	Menu: <a href="/">Home</a> || <a href="/about">About</a> {% if not user.is_authenticated%}|| <a href="/users/auth">Login</a> {%endif%}||
+	{% if user.is_authenticated%}
+		User: {{user.username}}. <a href="/users/logout">Logout</a>
+	{% else %}
+		<a href="/users/register">Register</a>
+	{% endif%}
+	<hr>
+	
+</div>
+
+{% if message %}
+	<div class="message">
+		<center>{{ message }}</center>
+	</div>
+{% endif %}
+
+{%block content%}
+{%endblock content%}
+
+</body>
+</html>

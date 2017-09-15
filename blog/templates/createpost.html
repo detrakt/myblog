@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style type="text/css">
+	.createpostcontainer{
+		padding-top:50px;
+	}
+</style>
+
+<div class="createpostcontainer">
+	<form action="/createpost/" method='POST'>
+		{% csrf_token %}
+		<label>Title: <input type="text" name="title"></label><br>
+		<label>Content: <input type="text" name="content"></label><br>
+		<button type="submit">Create Post</button>
+	</form>
+</div>
+{% endblock content%}
+

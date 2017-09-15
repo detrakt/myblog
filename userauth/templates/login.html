@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	{% if error %}
+		<center style="color:red;">{{error}}</center>
+	{% endif %}
+
+	<form action="/users/auth/" method="POST">
+	{% csrf_token %}
+	<label>Username: <input type="text" name="username"></label>
+	<label>Password: <input type="password" name="password"></label>
+	<hr>
+	<button type="submit">Login</button>
+		
+	</form>
+{% endblock content %}
