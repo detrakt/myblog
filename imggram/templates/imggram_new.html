@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<style type="text/css">
+	.centered{
+		margin-left: auto;
+		margin-right: auto;
+		width: 80%;
+	}
+</style>
+
+<div class="container centered">
+	<form method="POST" action="/imggram/upload/" enctype="multipart/form-data">
+		<!-- FORM ERRORS DEBUG
+		{% if form.non_field_errors or form.errors %}
+			<ul>
+			{% for error in form.non_field_errors|add:form.errors %}
+				<li>{{ error }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}-->
+
+		{%csrf_token%}
+		
+		{{form.as_p}}
+		<br>
+		<!-- <input type="hidden" name="user" value={{user.username}}> -->
+		<button type="submit" class="btn btn-success">Upload</button>
+	</form>
+</div>
+
+{% endblock content %}
