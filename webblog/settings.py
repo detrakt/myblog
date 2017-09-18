@@ -131,3 +131,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'webblog/media')
 MEDIAFILES_DIRS = [
 					os.path.join(BASE_DIR, "webblog/media"),
 				]
+
+FILE_UPLOAD_HANDLERS = [
+                            'django.core.files.uploadhandler.MemoryFileUploadHandler',
+                            'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+                        ]

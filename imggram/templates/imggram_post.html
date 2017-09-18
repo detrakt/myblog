@@ -2,6 +2,9 @@
 
 {% block content %}
 
+{% load static %}
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+
 <style type="text/css">
 	.centered{
 		width: 70%;
@@ -16,22 +19,72 @@
 	<div class="container centered">
 	
 	{% if post %}
+		{%csrf_token%}
 		<center><a href="/imggram/show/{{post.id}}">{{post.title|upper}}</a></center>
 		<br>
 		<a href="#" class="opacity">
-			<img src="/media/{{ post.image }}">
+			<img src="/media/{{ post.image }}" class="img-responsive">
 		</a>
-		<p style="padding-bottom:30px; padding-top: 20px;">
-		{{post.user.username}}: {{post.description}}
+
+		<p style="padding-top:10px;">
+			<span id = "likes-count">{{number_of_likes}}</span>
+			{% if var is 'y' %}
+				<i class="glyphicon glyphicon-heart-full"></i>
+			{% else %}
+				<i class="glyphicon glyphicon-heart-empty"></i>
+			{% endif %}
 		</p>
-	
+
+		<!-- LIKE BUTTON -->
+		{% if user.is_authenticated %}
+			<p style="padding-top:5px;">
+				<input type="hidden" class="post-id" value="{{post.id}}">
+				<input type="hidden" class="user-liked" value="{{var}}">
+				<button id="like-btn" class="btn"><i class="glyphicon glyphicon-thumbs-up"> Like</i></button>
+			</p>
+		{% endif %}
+
+		
+		<p style="padding-bottom:0px; padding-top: 20px;">
+		<strong>{{post.user.username}}</strong>: {{post.description}}
+		</p>
+		
 	{% else %}
 		<div class="container"><center>Invalid post.</center></div>
 	{% endif %}
 	
 	</div>
 
-	<div class="container centered">
+	<div class="container centered" style="padding-top: 50px">
 		<a href="/imggram/"><input type="button" class="btn btn-success" value="Go back" ></a>
 	</div>
+
+
+<script type="text/javascript">
+		var counter = $('#likes-count').val();
+
+		if($('.user-liked').val() === "y"){
+			$('#like-btn').addClass("btn-danger");
+		}
+
+		$('#like-btn').click(function(){
+			$(this).toggleClass("btn-danger");
+			var indx = $('.post-id').val();
+			$.ajax({
+				type: 'POST',
+				url: '/imggram/like/',
+				data: {
+					'contentType': 'ImgPost',
+					'post_id':indx,
+					'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+				},
+				success: LikePost,
+				dataType: 'html'
+			});
+		});
+
+		function LikePost(data, textStatus, jqXHR){
+			$('#likes-count').text($.trim(data));
+		}
+</script>
 {% endblock content %}

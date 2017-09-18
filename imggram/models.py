@@ -9,12 +9,23 @@ def user_directory_path(instance, filename):
 
 class ImgPost(models.Model):
 	id = models.AutoField(primary_key=True)
-	user = models.ForeignKey(User, unique=True)
+	user = models.ForeignKey(User)
 	image = models.ImageField(upload_to=user_directory_path)
 	title = models.TextField(max_length=255, blank=False, null=False)
 	description = models.TextField(max_length=255, blank=False, null=False)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now = True)
+	likes = models.ManyToManyField(User, blank=True, related_name = 'post_likes')
 
 	def __str__(self):
 		return "%d %s" %(self.id, self.title)
+
+class Like(models.Model):
+	id = models.AutoField(primary_key=True)
+	user_id = models.ForeignKey(User)
+	post_id = models.ForeignKey(ImgPost)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now = True)
+
+	def __str__(self):
+		return "User id: %d likes post id: %d" %(user_id.id, post_id.id)
