@@ -29,7 +29,7 @@
 	{% if posts %}
 		{%for p in posts%}
 			<div class="post-container">
-				<p><a href="/view/{{p.id}}">{{p.title|upper}}</a>{%if user.is_authenticated%}<a href="/deletepost/{{p.id}}" alt="Delete post"><span class="glyphicon glyphicon-remove"></span></a>{%endif%}</p>
+				<p><a href="/view/{{p.id}}">{{p.title|upper}}</a><!--{%if user.is_authenticated %}<a href="/deletepost/{{p.id}}" alt="Delete post"><span class="glyphicon glyphicon-remove"></span></a>{%endif%}--></p>
 				<p class="infodate">Criado a: {{p.created_at|date:"d-n-o"}}</p>
 				<hr>
 				<p>{{p.content}}</p>

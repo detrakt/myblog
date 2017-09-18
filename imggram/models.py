@@ -28,4 +28,15 @@ class Like(models.Model):
 	updated_at = models.DateTimeField(auto_now = True)
 
 	def __str__(self):
-		return "User id: %d likes post id: %d" %(user_id.id, post_id.id)
+		return "Like"
+
+class Comment(models.Model):
+	id = models.AutoField(primary_key=True)
+	user_id=models.ForeignKey(User)
+	post_id = models.ForeignKey(ImgPost)
+	comment = models.TextField(max_length=255)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now = True)
+
+	def __str__(self):
+		return "Comment"
